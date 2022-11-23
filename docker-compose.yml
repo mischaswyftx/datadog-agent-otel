@@ -1,0 +1,17 @@
+version: "3"
+services:
+  datadog-agent:
+    image: datadog/agent:latest
+    env_file:
+      - .env-dd
+    ports:
+      - 8125:8125
+      - 8126:8126
+      - 5000:5000
+      - 5001:5001
+      - 5002:5002
+      - 4317:4317
+      - 4318:4318
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./etc/datadog-docker.yaml:/etc/datadog-agent/datadog.yaml
